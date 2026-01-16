@@ -2,6 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
+import Button from "./Button";
 
 const LanguageSwitcher = () => {
   const router = useRouter();
@@ -10,6 +11,7 @@ const LanguageSwitcher = () => {
 
   // Determine the target locale
   const newLocale = locale === "ar" ? "en" : "ar";
+  const buttonLabel = locale === "ar" ? "EN" : "عربي";
 
   const handleLocaleSwitch = () => {
     // Replace the locale part in the pathname
@@ -21,14 +23,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <button
-      className="self-center border-2 rounded-sm border-main-color
-             hover:bg-main-color transition-all duration-200 cursor-pointer
-             py-1 px-3 hover:text-white text-main-color font-bold"
-      onClick={handleLocaleSwitch}
-    >
-      {newLocale.toUpperCase()}
-    </button>
+  <Button title={buttonLabel} onClick={handleLocaleSwitch} variant="blue"/>
   );
 };
 

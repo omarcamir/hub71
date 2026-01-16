@@ -3,6 +3,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../i18n/routing";
 import { generatePageMetadata } from "../helpers/getPageMetadata";
+import Header from "../components/layout/Header";
+import ScrollToTop from "../components/layout/ScrollToTop";
 
 // Dynamic metadata
 export async function generateMetadata({ params }: LayoutProps<"/[locale]">) {
@@ -24,10 +26,10 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale}>
       <div dir={dir} className="flex min-h-screen flex-col">
-        {/* <Navbar /> */}
+        <Header />
 
         <main className="flex-1" dir={dir}>
-          {/* <ScrollToTop /> */}
+          <ScrollToTop />
           {children}
         </main>
 

@@ -12,10 +12,10 @@ export default function middleware(request: NextRequest) {
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
   );
 
-  // Force default locale "ar" if missing
+  // Force default locale "en" if missing
   if (!hasLocaleInPath) {
     const url = request.nextUrl.clone();
-    url.pathname = `/ar${request.nextUrl.pathname}`;
+    url.pathname = `/en${request.nextUrl.pathname}`;
     url.search = request.nextUrl.search;
     url.hash = request.nextUrl.hash;
     return NextResponse.rewrite(url); // rewrite keeps it internal

@@ -1,4 +1,5 @@
 {
-  "title":"Test",
-  "description": "lorem test it"
+  "Home": "Home",
+  "Pricing": "Pricing",
+  "Contact": "Contact"
 }

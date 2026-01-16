@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-main-color: #0E2132;
-  --color-secondary-color: #DEA527;
+  --color-main-color: #0347ff;
+  --color-red-color: #d64d32;
+  --color-green-color: #6bce97;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -10,7 +11,7 @@
 @custom-variant hover (&:hover);
 @utility container {
   padding-inline: 1rem;
-  margin-inline:auto;
+  margin-inline: auto;
 
   @variant sm {
     padding-inline: 0.5rem;
@@ -28,14 +29,13 @@
 }
 
 /* @font-face { */
-  /* font-family: 'Noto Kufi Arabic'; */
-  /* src: url('/fonts/NotoKufiArabic-VariableFont_wght.ttf') format('woff2'); */
-  /* font-weight: 100 900; Range of weights in the variable font */
-  /* font-display: swap; Optional for better font loading behavior */
+/* font-family: 'Noto Kufi Arabic'; */
+/* src: url('/fonts/NotoKufiArabic-VariableFont_wght.ttf') format('woff2'); */
+/* font-weight: 100 900; Range of weights in the variable font */
+/* font-display: swap; Optional for better font loading behavior */
 /* } */
 
-html{
-
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -44,3 +44,17 @@ body {
   font-weight: 400; /* Default weight, can be changed dynamically */
 }
 
+/* Custom scrollbar for sleek look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
