@@ -8,7 +8,7 @@ const SITE_NAME: Record<Locale, string> = {
 };
 
 const withSiteName = (title: string, locale: Locale): string =>
-  `${title} | ${SITE_NAME[locale]}`;
+  `${SITE_NAME[locale]} | ${title}`;
 
 export const pageMetadata: Record<string, Record<Locale, Metadata>> = {
   home: {

@@ -5,6 +5,7 @@ import { routing } from "../i18n/routing";
 import { generatePageMetadata } from "../helpers/getPageMetadata";
 import Header from "../components/layout/Header";
 import ScrollToTop from "../components/layout/ScrollToTop";
+import Footer from "../components/layout/Footer";
 
 // Dynamic metadata
 export async function generateMetadata({ params }: LayoutProps<"/[locale]">) {
@@ -33,7 +34,7 @@ export default async function LocaleLayout({
           {children}
         </main>
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </NextIntlClientProvider>
   );

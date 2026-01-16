@@ -14,8 +14,7 @@ const Header = () => {
 
   return (
     <nav
-      className={`w-full z-50 transition-all duration- border-b border-b-gray-border bg-white py-8 md:py-10 lg:py-14 sticky top-0
-      `}
+      className={`w-full z-50 border-b xl:border-b-2 border-b-gray-border bg-white py-8 md:py-10 lg:py-14 sticky top-0`}
       dir="ltr"
     >
       <div className="container">
