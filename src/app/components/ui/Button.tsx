@@ -8,7 +8,8 @@ type ButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   variant?: ButtonVariant;
   rounded?: boolean;
-  padding?: string; // e.g. "px-4 py-2"
+  padding?: string;
+  className?: string;
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -27,19 +28,21 @@ const Button = ({
   variant = "blue",
   rounded = true,
   padding = "p-2",
+  className = "",
 }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
       className={`
-        self-center border transition-all duration-200 cursor-pointer
+        self-center border transition-all duration-200 cursor-pointer flex gap-2 items-center
         ${padding}
         ${rounded ? "rounded-md" : ""}
         ${variantClasses[variant]}
+        ${className}
       `}
     >
-      {icon}
-      {title && <span className={icon ? "ms-2" : ""}>{title}</span>}
+      {icon && icon}
+      {title && <span>{title}</span>}
     </button>
   );
 };

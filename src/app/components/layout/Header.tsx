@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <nav
-      className={`w-full z-50 transition-all duration-500 border-b bg-white border-white/10 py-4 shadow-lg sticky top-0
+      className={`w-full z-50 transition-all duration- border-b border-b-gray-border bg-white py-8 md:py-10 lg:py-14 sticky top-0
       `}
       dir="ltr"
     >
@@ -23,18 +23,26 @@ const Header = () => {
           <Logo />
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            <Button icon={<Search className="w-6 h-6" />} variant="white" />
-            <Button icon={<PersonStanding className="w-6 h-6" />} variant="white" />
 
-            <div className="-mr-2 flex">
-              <Button onClick={() => setIsOpen(!isOpen)} variant="blue"
-              icon = {isOpen ? (
+            <div className="hidden sm:flex gap-3">
+              <Button icon={<Search className="w-6 h-6" />} variant="white" />
+              <Button
+                icon={<PersonStanding className="w-6 h-6" />}
+                variant="white"
+              />
+            </div>
+
+            <Button
+              onClick={() => setIsOpen(!isOpen)}
+              variant="blue"
+              icon={
+                isOpen ? (
                   <X className="w-6 h-6" />
                 ) : (
                   <Menu className="w-6 h-6" />
-                )}
-              />
-            </div>
+                )
+              }
+            />
           </div>
         </div>
       </div>
@@ -46,7 +54,7 @@ const Header = () => {
             : "scale-y-0 opacity-0 pointer-events-none"
         }`}
       >
-        <div className="px-4 py-6 space-y-2">
+        <div className="px-4 py-6 w-full container">
           {headerLinks.map((link) => (
             <Link
               key={link.href}
@@ -57,6 +65,20 @@ const Header = () => {
               {t(link.label)}
             </Link>
           ))}
+          <div className="flex gap-2 w-full md:hidden">
+            <Button
+              title={t("Search")}
+              icon={<Search className="w-5 h-5 font-bold" />}
+              variant="white"
+              className="font-bold"
+            />
+            <Button
+              title={t("Accessability")}
+              icon={<PersonStanding className="w-5 h-5 font-bold" />}
+              variant="white"
+              className="font-bold"
+            />
+          </div>
         </div>
       </div>
     </nav>
