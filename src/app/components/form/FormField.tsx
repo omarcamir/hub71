@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 
 import { FormFieldProps, FormFieldType } from "./types/FormFieldProps";
 import { cn } from "@/app/utils/cn";
+import { ChevronDown } from "lucide-react";
 
 interface Props<T extends FieldValues> extends FormFieldProps<T> {
   fieldType: FormFieldType;
@@ -96,25 +97,40 @@ export function FormField<T extends FieldValues>({
 
         {/* Select */}
         {fieldType === "select" && (
-          <select
-            disabled={disabled}
-            {...register(name)}
-            aria-required={required}
-            className={cn(
-              baseFieldClasses,
-              "appearance-none cursor-pointer",
-              hasIcon && (isAr ? "pr-12" : "pl-12")
-            )}
-          >
-            <option value="" disabled>
-              {computedPlaceholder}
-            </option>
-            {options?.map((opt) => (
-              <option key={opt.value} value={opt.id}>
-                {isAr ? opt.labelA : opt.labelE}
+          <div className="relative">
+            <select
+              disabled={disabled}
+              {...register(name)}
+              aria-required={required}
+              className={cn(
+                baseFieldClasses,
+                "appearance-none cursor-pointer",
+                hasIcon && (isAr ? "pr-12" : "pl-12")
+              )}
+            >
+              {/* Placeholder */}
+              <option value="" disabled hidden className="opacity-50 text-gray-500">
+                {computedPlaceholder}
               </option>
-            ))}
-          </select>
+
+              {/* Options */}
+              {options?.map((opt) => (
+                <option key={opt.value} value={opt.id}>
+                  {isAr ? opt.labelA : opt.labelE}
+                </option>
+              ))}
+            </select>
+
+            {/* Dropdown arrow */}
+            <div
+              className={cn(
+                "pointer-events-none absolute top-1/2 -translate-y-1/2",
+                isAr ? "left-3" : "right-3"
+              )}
+            >
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+          </div>
         )}
 
         {/* Checkbox */}

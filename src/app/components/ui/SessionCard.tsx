@@ -48,7 +48,7 @@ export default async function SessionCard({
         href={href}
         title={btnLabel}
         rounded={false}
-        className="font-bold"
+        className="font-bold uppercase"
       />
     </div>
   );

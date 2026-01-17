@@ -3,7 +3,7 @@
 import { MouseEventHandler, ReactNode } from "react";
 import Link from "next/link";
 
-export type ButtonVariant = "blue" | "white" | "red" | "green";
+export type ButtonVariant = "blue" | "white" | "red" | "green" | "ghost";
 
 type ButtonProps = {
   title?: string; // visible text
@@ -15,25 +15,27 @@ type ButtonProps = {
   className?: string;
   disabled?: boolean;
   href?: string;
+  type?: "button" | "submit" | "reset";
 
   // ✅ New accessibility prop
   ariaLabel?: string; // used when button has only icon
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  blue: "bg-main-color border-main-color text-white hover:bg-white hover:text-main-color",
+  blue: "bg-main-color border border-main-color text-white hover:bg-white hover:text-main-color",
   white:
     "bg-white shadow-md shadow-gray-300 hover:bg-main-color hover:text-white border-none",
-  red: "bg-red-color border-red-color text-white hover:bg-white hover:text-red-color",
+  red: "bg-red-color border border-red-color text-white hover:bg-white hover:text-red-color",
   green:
-    "bg-green-color border-green-color text-white hover:bg-white hover:text-green-color",
+    "bg-green-color border border-green-color text-white hover:bg-white hover:text-green-color",
+  ghost: "bg-transparent border-none text-gray-600 hover:text-main-color",
 };
 
 const disabledClasses =
   "opacity-50 cursor-not-allowed hover:bg-none hover:text-current";
 
 const baseClasses = `
-  self-center border transition-all duration-200 flex gap-2 items-center
+  self-center transition-all duration-200 flex gap-2 items-center
 `;
 
 const Button = ({
@@ -46,6 +48,7 @@ const Button = ({
   className = "",
   disabled = false,
   href,
+  type = "button",
   ariaLabel, // new prop
 }: ButtonProps) => {
   const classes = `
@@ -73,6 +76,7 @@ const Button = ({
 
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${classes} cursor-pointer`}
