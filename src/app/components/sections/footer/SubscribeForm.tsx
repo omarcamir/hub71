@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocale } from "next-intl";
 import { FormEvent } from "react";
 
-export function SubscribeForm() {
+export default function SubscribeForm() {
   const isAr = useLocale() === "ar";
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -4,13 +4,23 @@ import { getLocale } from "next-intl/server";
 import Logo from "../ui/Logo";
 import { footerLinks, footerTerms } from "@/app/utils/paths";
 import Divider from "../ui/Divider";
-import SocialMedia from "../ui/SocialMedia";
-import { SubscribeForm } from "../sections/footer/SubscribeForm";
+import dynamic from "next/dynamic";
+
+const SocialMedia = dynamic(() => import("../ui/SocialMedia"), {
+  ssr: true});
+
+const SubscribeForm = dynamic(
+  () => import("../sections/footer/SubscribeForm"),
+  { ssr: true }
+);
 
 const Footer = async () => {
   const isAr = (await getLocale()) === "ar";
   return (
-    <footer className="bg-gray-border py-16 min-h-130" dir={isAr? "rtl": "ltr"}>
+    <footer
+      className="bg-gray-border py-16 min-h-130"
+      dir={isAr ? "rtl" : "ltr"}
+    >
       <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12">
         <div className="col-span-1 md:col-span-2 flex flex-col gap-8 md:gap-10 lg:gap-12">
           <div className="mb-6">
@@ -29,7 +39,9 @@ const Footer = async () => {
               <p>{isAr ? "اشترك" : "Subscribe"}</p>
               <p>{isAr ? "في مجلتنا" : "to our newsletter"}</p>
             </div>
-            <SubscribeForm/>
+            <div className="h-14 md:h-15">
+              <SubscribeForm />
+            </div>
           </div>
         </div>
         {footerLinks.map((section) => (

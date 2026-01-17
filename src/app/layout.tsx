@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import "./globals.css";
 import { hasLocale } from "next-intl";
 import { Toaster } from "sonner";
+import { grotesk, notoArabic } from "./fonts/fonts";
 
 export default async function RootLayout({
   children,
@@ -21,11 +22,14 @@ export default async function RootLayout({
   }
 
   const dir = locale === "ar" ? "rtl" : "ltr";
-  const fontClass = locale === "ar" ? "font-NotoSansArabic" : "font-grotesk";
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`flex min-h-screen flex-col ${fontClass}`}>
+      <body
+        className={`flex min-h-screen flex-col ${
+          locale === "ar" ? notoArabic.variable : grotesk.variable
+        }`}
+      >
         {children}
         <Toaster position="top-center" richColors dir={dir} />
       </body>

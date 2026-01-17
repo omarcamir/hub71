@@ -11,6 +11,7 @@ import Footer from "../components/layout/Footer";
 export async function generateMetadata({ params }: LayoutProps<"/[locale]">) {
   return generatePageMetadata({ page: "home", params });
 }
+
 // Layout must be async if using await params
 export default async function LocaleLayout({
   children,
