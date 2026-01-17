@@ -5,6 +5,7 @@ import Logo from "../ui/Logo";
 import { footerLinks, footerTerms } from "@/app/utils/paths";
 import Divider from "../ui/Divider";
 import SocialMedia from "../ui/SocialMedia";
+import { SubscribeForm } from "../sections/footer/SubscribeForm";
 
 const Footer = async () => {
   const isAr = (await getLocale()) === "ar";
@@ -28,6 +29,7 @@ const Footer = async () => {
               <p>{isAr ? "اشترك" : "Subscribe"}</p>
               <p>{isAr ? "في مجلتنا" : "to our newsletter"}</p>
             </div>
+            <SubscribeForm/>
           </div>
         </div>
         {footerLinks.map((section) => (
