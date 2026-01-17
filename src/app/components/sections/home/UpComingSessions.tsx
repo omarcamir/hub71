@@ -14,16 +14,17 @@ const UpComingSessions = async ({ sessions }: UpComingSessionsProps) => {
         subtitle={t("Keep Updated")}
         title={t("Upcoming Sessions")}
       />
-      <div className="my-5 flex flex-col gap-5">
+      <div className="my-5 flex flex-col gap-4">
         {sessions?.map((session) => (
           <div key={session.title}>
             <SessionCard
               title={session.title}
               start={session.start}
               end={session.end}
-              btnLabel={t("Register")}
+              btnLabel={t("Register Now")}
               btnVariant="red"
               href={`/register/${session.title}`}
+              timeColor="text-red-color"
             />
           </div>
         ))}

@@ -70,7 +70,7 @@ const Button = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${classes} cursor-pointer`}
+      className={`${classes} inline-block   . cursor-pointer`}
     >
       {icon && icon}
       {title && <span>{title}</span>}
