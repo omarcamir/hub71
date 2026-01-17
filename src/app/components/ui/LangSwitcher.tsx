@@ -7,11 +7,13 @@ import Button from "./Button";
 const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useLocale();
+  const isAr = useLocale() === "ar";
 
   // Determine the target locale
-  const newLocale = locale === "ar" ? "en" : "ar";
-  const buttonLabel = locale === "ar" ? "EN" : "عربي";
+  const newLocale = isAr ? "en" : "ar";
+  const buttonLabel = isAr ? "EN" : "عربي";
+
+  const fontClass = isAr ?  "font-grotesk" : "font-NotoSansArabic";
 
   const handleLocaleSwitch = () => {
     // Replace the locale part in the pathname
@@ -23,7 +25,12 @@ const LanguageSwitcher = () => {
   };
 
   return (
-  <Button title={buttonLabel} onClick={handleLocaleSwitch} variant="blue"/>
+    <Button
+      title={buttonLabel}
+      onClick={handleLocaleSwitch}
+      variant="blue"
+      className={fontClass}
+    />
   );
 };
 
