@@ -2,12 +2,13 @@
 
 import { Link } from "@/app/i18n/navigation";
 import { MouseEventHandler, ReactNode } from "react";
+import Spinner from "./Spinner";
 
 export type ButtonVariant = "blue" | "white" | "red" | "green" | "ghost";
 
 type ButtonProps = {
-  title?: string; // visible text
-  icon?: ReactNode; // optional icon
+  title?: string;
+  icon?: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   variant?: ButtonVariant;
   rounded?: boolean;
@@ -16,9 +17,8 @@ type ButtonProps = {
   disabled?: boolean;
   href?: string;
   type?: "button" | "submit" | "reset";
-
-  // ✅ New accessibility prop
-  ariaLabel?: string; // used when button has only icon
+  loading?: boolean;
+  ariaLabel?: string;
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -35,7 +35,7 @@ const disabledClasses =
   "opacity-50 cursor-not-allowed hover:bg-none hover:text-current";
 
 const baseClasses = `
-  self-center transition-all duration-200 flex gap-2 items-center
+  self-center transition-all duration-200 flex gap-2 items-center justify-center
 `;
 
 const Button = ({
@@ -49,27 +49,37 @@ const Button = ({
   disabled = false,
   href,
   type = "button",
-  ariaLabel, // new prop
+  loading = false,
+  ariaLabel,
 }: ButtonProps) => {
+  const isDisabled = disabled || loading;
+
   const classes = `
     ${baseClasses}
     ${padding}
     ${rounded ? "rounded-md" : ""}
     ${variantClasses[variant]}
-    ${disabled ? disabledClasses : ""}
+    ${isDisabled ? disabledClasses : ""}
     ${className}
   `;
 
-  // Render as LINK if href exists
-  if (href && !disabled) {
+  const content = (
+    <>
+      {loading ? <Spinner /> : icon}
+      {title && <span>{title}</span>}
+    </>
+  );
+
+  // Render as LINK (disabled when loading)
+  if (href && !isDisabled) {
     return (
       <Link
         href={href}
         className={classes}
-        aria-label={!title && ariaLabel ? ariaLabel : undefined} // accessibility
+        aria-label={!title && ariaLabel ? ariaLabel : undefined}
+        aria-busy={loading}
       >
-        {icon && icon}
-        {title && <span>{title}</span>}
+        {content}
       </Link>
     );
   }
@@ -77,13 +87,14 @@ const Button = ({
   return (
     <button
       type={type}
-      onClick={onClick}
-      disabled={disabled}
+      onClick={loading ? undefined : onClick}
+      disabled={isDisabled}
       className={`${classes} cursor-pointer`}
-      aria-label={!title && ariaLabel ? ariaLabel : undefined} // accessibility
+      aria-label={!title && ariaLabel ? ariaLabel : undefined}
+      aria-disabled={isDisabled}
+      aria-busy={loading}
     >
-      {icon && icon}
-      {title && <span>{title}</span>}
+      {content}
     </button>
   );
 };

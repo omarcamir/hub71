@@ -8,6 +8,8 @@ import { FormField } from "@/app/components/form/FormField";
 import Button from "@/app/components/ui/Button";
 import { RotateCcw, RotateCw } from "lucide-react";
 import { useRef } from "react";
+import { submitContact } from "@/app/utils/api";
+import { notify } from "@/app/utils/notify";
 
 const ContactForm = () => {
   const t = useTranslations("validation"); // for validation messages
@@ -31,10 +33,34 @@ const ContactForm = () => {
       country: "",
     },
   });
+  const isSubmitting = methods.formState.isSubmitting;
 
-  const onSubmit = (data: ContactForm) => {
-    console.log("Form submitted:", data);
-    // handle submission (e.g., API call)
+  const onSubmit = async (data: ContactForm) => {
+    try {
+      const res = await submitContact(data);
+      if (res.success) {
+        notify("success", t("successMessage"));
+        methods.reset();
+        return;
+      }
+
+      // validation error (422)
+      if ("errors" in res) {
+        Object.entries(res.errors).forEach(([field, messages]) => {
+          const message = messages?.[0];
+          if (!message) return;
+
+          methods.setError(field as keyof ContactForm, {
+            type: "server",
+            message,
+          });
+        });
+
+        notify("error", t("validationError"));
+      }
+    } catch {
+      notify("error", t("unexpectedError"));
+    }
   };
 
   // Gender options
@@ -162,6 +188,7 @@ const ContactForm = () => {
             rounded={false}
             type="submit"
             className="font-bold uppercase"
+            loading={isSubmitting}
           />
           <Button
             variant="ghost"

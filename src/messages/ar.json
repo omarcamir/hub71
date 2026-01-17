@@ -39,7 +39,10 @@
     "countryPlaceholder": "بلد الإقامة",
     "contactCheckbox": "أوافق على تلقي رسائل البريد الإلكتروني التسويقية والتواصل من Hub71",
     "submitButton": "إرسال",
-    "clearForm": "مسح النموذج"
+    "clearForm": "مسح النموذج",
+    "successMessage": "تم التسجيل بنجاح.",
+    "validationError": "يرجى مراجعة الحقول المحددة والمحاولة مرة أخرى.",
+    "unexpectedError": "فشل التسجيل بسبب خطأ غير متوقع. يرجى المحاولة لاحقًا."
   },
   "comingSoonTitle": "قريبًا!",
   "comingSoonSubtitle": "نعمل جاهدين لتقديم هذه الجلسة لك. ترقب التحديثات!"

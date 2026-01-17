@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import "./globals.css";
 import { hasLocale } from "next-intl";
+import { Toaster } from "sonner";
 
 export default async function RootLayout({
   children,
@@ -26,6 +27,7 @@ export default async function RootLayout({
     <html lang={locale} dir={dir} suppressHydrationWarning>
       <body className={`flex min-h-screen flex-col ${fontClass}`}>
         {children}
+        <Toaster position="top-center" richColors dir={dir} />
       </body>
     </html>
   );
