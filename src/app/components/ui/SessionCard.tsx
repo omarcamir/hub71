@@ -1,6 +1,7 @@
-"use Client";
 import { Calendar } from "lucide-react";
 import Button, { ButtonVariant } from "./Button";
+import { formatSessionDate } from "@/app/helpers/formatSessionDate";
+import { getLocale, getTranslations } from "next-intl/server";
 
 export interface SessionProps {
   start: string;
@@ -12,7 +13,7 @@ export interface SessionProps {
   timeColor?: string;
 }
 
-export default function SessionCard({
+export default async function SessionCard({
   start,
   end,
   title,
@@ -21,25 +22,32 @@ export default function SessionCard({
   btnLabel,
   timeColor,
 }: SessionProps) {
+  const locale = await getLocale();
+  const t = await getTranslations("");
+  const { date, startTime, endTime } = formatSessionDate(start, end, locale);
   return (
-    <div className="border rounded-lg p-4 flex justify-between items-center">
-      <div>
+    <div className="py-9 px-6 bg-gray-card/50 flex flex-col md:flex-row justify-between items-center gap-5">
+      <div className="md:max-w-3/5">
         <div className={`flex items-start gap-1 ${timeColor}`}>
           <Calendar className="w-4 h-4" />
-          <p className="text-sm text-gray-500">
-            {new Date(start).toLocaleString()} –{"TO"}
-            {new Date(end).toLocaleTimeString()}
+          <p className="text-xs leading-5">
+            {date}
+            <span className="mx-2 inline-block md:inline">|</span>
+            {startTime}
+            <span className="mx-2">{t("TO")}</span>
+            {endTime}
           </p>
         </div>
-        <h3 className="font-semibold text-xl">{title}</h3>
+        <h3 className="font-semibold text-xl wrap-break-word mt-2">{title}</h3>
       </div>
 
       <Button
         variant={btnVariant}
-        padding="px-4 py-2"
+        padding="px-9 py-5"
         href={href}
         title={btnLabel}
         rounded={false}
+        className="font-bold"
       />
     </div>
   );

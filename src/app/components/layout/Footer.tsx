@@ -18,7 +18,7 @@ const Footer = async () => {
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="text-main-color uppercase leading-8 md:leading-10 xl:leading-14 2xl:leading-16">
               <p className="text-5xl md:text-7xl lg:text-8xl">
-                {isAr ? "ابق" : "GET"}
+                {isAr ? "ابقَ" : "GET"}
               </p>
               <p className="font-extrabold text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl">
                 {isAr ? "على تواصل" : "IN TOUNCH"}
