@@ -37,8 +37,10 @@
     "hearAboutHubPlaceholder": "كيفية معرفتك بنا",
     "interestedInPlaceholder": "مجالات الاهتمام",
     "countryPlaceholder": "بلد الإقامة",
-    "contactCheckbox":"أوافق على تلقي رسائل البريد الإلكتروني التسويقية والتواصل من Hub71",
+    "contactCheckbox": "أوافق على تلقي رسائل البريد الإلكتروني التسويقية والتواصل من Hub71",
     "submitButton": "إرسال",
     "clearForm": "مسح النموذج"
-  }
+  },
+  "comingSoonTitle": "قريبًا!",
+  "comingSoonSubtitle": "نعمل جاهدين لتقديم هذه الجلسة لك. ترقب التحديثات!"
 }

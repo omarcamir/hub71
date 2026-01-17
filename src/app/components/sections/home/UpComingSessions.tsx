@@ -23,7 +23,7 @@ const UpComingSessions = async ({ sessions }: UpComingSessionsProps) => {
               end={session.end}
               btnLabel={t("Register Now")}
               btnVariant="red"
-              href={`/register/${session.title}`}
+              href={`/register-session`}
               timeColor="text-red-color"
               t={t}
             />

@@ -32,6 +32,7 @@
     "companyNamePlaceholder": "Company Name",
     "jobTitlePlaceholder": "Job title",
     "companyWebsitePlaceholder": "Company Website",
+    "invalidUrl": "invalidUrl",
     "genderPlaceholder": "I am",
     "hearAboutHubPlaceholder": "How did you hear about Hub71?",
     "interestedInPlaceholder": "Interested in",
@@ -39,5 +40,7 @@
     "contactCheckbox": "I agree to receive marketing emails and communications from Hub71",
     "submitButton": "Submit",
     "clearForm": "Clear Form"
-  }
+  },
+  "comingSoonTitle": "SOON!",
+  "comingSoonSubtitle": "We are working hard to bring this session to you. Stay tuned for updates!"
 }

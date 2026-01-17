@@ -1,7 +1,7 @@
 "use client";
 
+import { Link } from "@/app/i18n/navigation";
 import { MouseEventHandler, ReactNode } from "react";
-import Link from "next/link";
 
 export type ButtonVariant = "blue" | "white" | "red" | "green" | "ghost";
 

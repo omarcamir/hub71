@@ -23,7 +23,7 @@ const PrevSessions = async ({ sessions }: PrevSessionsProps) => {
               end={session.end}
               btnLabel={t("Get Recording")}
               btnVariant="green"
-              href={`/register/${session.title}`}
+              href={`/register-session/`}
               timeColor="text-green-color"
               t={t}
             />
