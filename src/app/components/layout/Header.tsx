@@ -48,14 +48,15 @@ const Header = () => {
               <LanguageSwitcher />
 
               <div className="hidden sm:flex gap-3">
-                <Button icon={<Search className="w-6 h-6" />} variant="white" />
-                <Button icon={<PersonStanding className="w-6 h-6" />} variant="white" />
+                <Button icon={<Search className="w-6 h-6" />} ariaLabel="search" variant="white" />
+                <Button icon={<PersonStanding className="w-6 h-6" />} ariaLabel="accessability" variant="white" />
               </div>
 
               <Button
                 onClick={() => setIsOpen(!isOpen)}
                 variant="blue"
                 icon={isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                ariaLabel="menu"
               />
             </div>
           </div>
@@ -78,8 +79,8 @@ const Header = () => {
               </Link>
             ))}
             <div className="flex gap-2 w-full md:hidden">
-              <Button title={t("Search")} icon={<Search className="w-5 h-5 font-bold" />} variant="white" className="font-bold" />
-              <Button title={t("Accessability")} icon={<PersonStanding className="w-5 h-5 font-bold" />} variant="white" className="font-bold" />
+              <Button title={t("Search")} icon={<Search className="w-5 h-5 font-bold" />} ariaLabel="search" variant="white" className="font-bold" />
+              <Button title={t("Accessability")} icon={<PersonStanding className="w-5 h-5 font-bold" />} ariaLabel="accessability" variant="white" className="font-bold" />
             </div>
           </div>
         </div>

@@ -9,14 +9,14 @@ import SocialMedia from "../ui/SocialMedia";
 const Footer = async () => {
   const isAr = (await getLocale()) === "ar";
   return (
-    <footer className="bg-gray-border py-16">
+    <footer className="bg-gray-border py-16 min-h-130" dir={isAr? "rtl": "ltr"}>
       <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12">
         <div className="col-span-1 md:col-span-2 flex flex-col gap-8 md:gap-10 lg:gap-12">
           <div className="mb-6">
             <Logo size="small" />
           </div>
           <div className="flex flex-col gap-4 md:gap-6">
-            <div className="text-main-color uppercase leading-8 md:leading-10 xl:leading-14 2xl:leading-16">
+            <div className="text-main-color uppercase min-h-40">
               <p className="text-5xl md:text-7xl lg:text-8xl">
                 {isAr ? "ابقَ" : "GET"}
               </p>

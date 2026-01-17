@@ -6,17 +6,18 @@ import Link from "next/link";
 export type ButtonVariant = "blue" | "white" | "red" | "green";
 
 type ButtonProps = {
-  title?: string;
-  icon?: ReactNode;
+  title?: string; // visible text
+  icon?: ReactNode; // optional icon
   onClick?: MouseEventHandler<HTMLButtonElement>;
   variant?: ButtonVariant;
   rounded?: boolean;
   padding?: string;
   className?: string;
   disabled?: boolean;
-
-  // 👇 new props
   href?: string;
+
+  // ✅ New accessibility prop
+  ariaLabel?: string; // used when button has only icon
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -45,6 +46,7 @@ const Button = ({
   className = "",
   disabled = false,
   href,
+  ariaLabel, // new prop
 }: ButtonProps) => {
   const classes = `
     ${baseClasses}
@@ -55,22 +57,26 @@ const Button = ({
     ${className}
   `;
 
-  // 👉 Render as LINK if href exists
+  // Render as LINK if href exists
   if (href && !disabled) {
     return (
-      <Link href={href} className={classes}>
+      <Link
+        href={href}
+        className={classes}
+        aria-label={!title && ariaLabel ? ariaLabel : undefined} // accessibility
+      >
         {icon && icon}
         {title && <span>{title}</span>}
       </Link>
     );
   }
 
-  // 👉 Default: normal button
   return (
     <button
       onClick={onClick}
       disabled={disabled}
       className={`${classes} cursor-pointer`}
+      aria-label={!title && ariaLabel ? ariaLabel : undefined} // accessibility
     >
       {icon && icon}
       {title && <span>{title}</span>}

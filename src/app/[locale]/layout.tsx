@@ -24,20 +24,16 @@ export default async function LocaleLayout({
   }
   const dir = locale === "ar" ? "rtl" : "ltr";
 
-  const fontClass = locale === 'ar' ? 'font-NotoSansArabic' : 'font-grotesk';
-
   return (
     <NextIntlClientProvider locale={locale}>
-      <div dir={dir} className={`flex min-h-screen flex-col ${fontClass}`}>
-        <Header />
+      <Header />
 
-        <main className="flex-1" dir={dir}>
-          <ScrollToTop />
-          {children}
-        </main>
+      <main className="flex-1" dir={dir}>
+        <ScrollToTop />
+        {children}
+      </main>
 
-        <Footer />
-      </div>
+      <Footer />
     </NextIntlClientProvider>
   );
 }

@@ -25,6 +25,7 @@ const PrevSessions = async ({ sessions }: PrevSessionsProps) => {
               btnVariant="green"
               href={`/register/${session.title}`}
               timeColor="text-green-color"
+              t={t}
             />
           </div>
         ))}

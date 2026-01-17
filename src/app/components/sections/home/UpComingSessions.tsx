@@ -25,6 +25,7 @@ const UpComingSessions = async ({ sessions }: UpComingSessionsProps) => {
               btnVariant="red"
               href={`/register/${session.title}`}
               timeColor="text-red-color"
+              t={t}
             />
           </div>
         ))}

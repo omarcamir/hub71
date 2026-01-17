@@ -1,7 +1,7 @@
 import { Calendar } from "lucide-react";
 import Button, { ButtonVariant } from "./Button";
 import { formatSessionDate } from "@/app/helpers/formatSessionDate";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
 export interface SessionProps {
   start: string;
@@ -11,6 +11,7 @@ export interface SessionProps {
   btnVariant: ButtonVariant;
   btnLabel: string;
   timeColor?: string;
+  t: (key: string) => string;
 }
 
 export default async function SessionCard({
@@ -21,9 +22,9 @@ export default async function SessionCard({
   btnVariant,
   btnLabel,
   timeColor,
+  t
 }: SessionProps) {
   const locale = await getLocale();
-  const t = await getTranslations("");
   const { date, startTime, endTime } = formatSessionDate(start, end, locale);
   return (
     <div className="py-9 px-6 bg-gray-card/50 flex flex-col md:flex-row justify-between items-center gap-5">
