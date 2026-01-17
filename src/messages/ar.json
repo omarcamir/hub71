@@ -1,7 +1,10 @@
 {
-   "Home": "الرئيسية",
+  "Home": "الرئيسية",
   "Pricing": "الأسعار",
   "Contact": "اتصل بنا",
   "Accessability": "إمكانية الوصول",
-  "Search": "بحث"
+  "Search": "بحث",
+  "Keep Updated": "ابقَ على اطلاع",
+  "Upcoming Sessions": "الجلسات القادمة",
+  "Previous Sessions": "الجلسات السابقة"
 }
