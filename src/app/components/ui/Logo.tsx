@@ -3,6 +3,7 @@ import Image from "next/image";
 
 type LogoProps = {
   size?: "small" | "medium" | "large";
+  className?:string;
 };
 
 const sizesMap = {
@@ -11,7 +12,7 @@ const sizesMap = {
   large: 180,
 };
 
-const Logo = ({ size = "medium" }: LogoProps) => {
+const Logo = ({ size = "medium", className }: LogoProps) => {
   const dimension = sizesMap[size];
 
   return (
@@ -22,7 +23,8 @@ const Logo = ({ size = "medium" }: LogoProps) => {
         width={dimension}
         height={dimension}
         sizes={`${dimension}px`}
-        priority
+        fetchPriority="high"
+        className={className}
       />
     </Link>
   );
