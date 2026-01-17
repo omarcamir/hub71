@@ -1,3 +1,4 @@
+"use Client";
 import { Calendar } from "lucide-react";
 import Button, { ButtonVariant } from "./Button";
 
@@ -5,7 +6,7 @@ export interface SessionProps {
   start: string;
   end: string;
   title: string;
-  onClick: () => void;
+  href: string;
   btnVariant: ButtonVariant;
   btnLabel: string;
   timeColor?: string;
@@ -15,12 +16,11 @@ export default function SessionCard({
   start,
   end,
   title,
-  onClick,
+  href,
   btnVariant,
   btnLabel,
   timeColor,
-}: SessionProps
-) {
+}: SessionProps) {
   return (
     <div className="border rounded-lg p-4 flex justify-between items-center">
       <div>
@@ -37,8 +37,9 @@ export default function SessionCard({
       <Button
         variant={btnVariant}
         padding="px-4 py-2"
-        onClick={onClick}
+        href={href}
         title={btnLabel}
+        rounded={false}
       />
     </div>
   );

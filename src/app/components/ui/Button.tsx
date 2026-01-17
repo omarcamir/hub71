@@ -1,4 +1,7 @@
+"use client";
+
 import { MouseEventHandler, ReactNode } from "react";
+import Link from "next/link";
 
 export type ButtonVariant = "blue" | "white" | "red" | "green";
 
@@ -10,7 +13,10 @@ type ButtonProps = {
   rounded?: boolean;
   padding?: string;
   className?: string;
-  disabled?: boolean; // added disabled prop
+  disabled?: boolean;
+
+  // 👇 new props
+  href?: string;
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -22,9 +28,12 @@ const variantClasses: Record<ButtonVariant, string> = {
     "bg-green-color border-green-color text-white hover:bg-white hover:text-green-color",
 };
 
-// Disabled styles (applied on top of variant styles)
 const disabledClasses =
   "opacity-50 cursor-not-allowed hover:bg-none hover:text-current";
+
+const baseClasses = `
+  self-center border transition-all duration-200 flex gap-2 items-center
+`;
 
 const Button = ({
   title,
@@ -35,19 +44,33 @@ const Button = ({
   padding = "p-2",
   className = "",
   disabled = false,
+  href,
 }: ButtonProps) => {
+  const classes = `
+    ${baseClasses}
+    ${padding}
+    ${rounded ? "rounded-md" : ""}
+    ${variantClasses[variant]}
+    ${disabled ? disabledClasses : ""}
+    ${className}
+  `;
+
+  // 👉 Render as LINK if href exists
+  if (href && !disabled) {
+    return (
+      <Link href={href} className={classes}>
+        {icon && icon}
+        {title && <span>{title}</span>}
+      </Link>
+    );
+  }
+
+  // 👉 Default: normal button
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`
-        self-center border transition-all duration-200 cursor-pointer flex gap-2 items-center
-        ${padding}
-        ${rounded ? "rounded-md" : ""}
-        ${variantClasses[variant]}
-        ${disabled ? disabledClasses : ""}
-        ${className}
-      `}
+      className={`${classes} cursor-pointer`}
     >
       {icon && icon}
       {title && <span>{title}</span>}
