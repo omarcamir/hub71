@@ -2,27 +2,18 @@ import { Link } from "@/app/i18n/navigation";
 import Image from "next/image";
 
 type LogoProps = {
-  size?: "small" | "medium" | "large";
   className?: string;
 };
 
-const sizesMap = {
-  small: 100,
-  medium: 140,
-  large: 180,
-};
-
-const Logo = ({ size = "medium", className }: LogoProps) => {
-  const dimension = sizesMap[size];
-
+const Logo = ({ className }: LogoProps) => {
   return (
     <Link href="/">
       <Image
         src="/Logo.svg"
         alt="HUB71"
-        width={dimension}
-        height={dimension}
-        sizes={`${dimension}px`}
+        width={180}
+        height={180}
+        sizes="(max-width: 640px) 90px, (max-width: 1024px) 140px, 180px"
         fetchPriority="high"
         className={className}
         style={{ width: "auto", height: "auto" }}
