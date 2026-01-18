@@ -7,22 +7,23 @@ const intlMiddleware = createMiddleware(routing);
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Ignore paths that already include a locale
-  const hasLocaleInPath = routing.locales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
-  );
+  const locale =
+    routing.locales.find(
+      (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
+    ) ?? "en";
 
-  // Force default locale "en" if missing
-  if (!hasLocaleInPath) {
+  // Rewrite if locale missing
+  if (!pathname.startsWith(`/${locale}`)) {
     const url = request.nextUrl.clone();
-    url.pathname = `/en${request.nextUrl.pathname}`;
-    url.search = request.nextUrl.search;
-    url.hash = request.nextUrl.hash;
-    return NextResponse.rewrite(url); // rewrite keeps it internal
+    url.pathname = `/${locale}${pathname}`;
+    const res = NextResponse.rewrite(url);
+    res.headers.set("NEXT_LOCALE", locale);
+    return res;
   }
 
-  // Let next-intl handle the rest
-  return intlMiddleware(request);
+  const res = intlMiddleware(request);
+  res.headers.set("NEXT_LOCALE", locale);
+  return res;
 }
 
 export const config = {

@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 import "./globals.css";
 import { hasLocale } from "next-intl";
 import { Toaster } from "sonner";
@@ -9,14 +9,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Must await cookies() here
-  const cookieStore = await cookies();
+  const headerList = await headers(); // ✅ MUST await
+  let locale = headerList.get("NEXT_LOCALE") || "en";
 
-  // Get the locale cookie
-  const localeCookie = cookieStore.get("NEXT_LOCALE");
-  let locale = localeCookie?.value || "en";
-
-  // Validate the locale
   if (!hasLocale(["en", "ar"], locale)) {
     locale = "en";
   }

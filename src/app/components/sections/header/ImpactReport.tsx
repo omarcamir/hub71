@@ -9,7 +9,7 @@ const ImpactReport = () => {
     >
       <div className="h-10 flex items-center">
         <Image
-          src="/impact-report.png"
+          src="/impact-report.webp"
           alt="HUB71"
           width={300}
           height={230}

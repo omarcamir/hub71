@@ -5,6 +5,7 @@ export const grotesk = localFont({
   variable: "--font-grotesk",
   display: "swap",
   adjustFontFallback: "Arial",
+  preload: true,
 });
 
 export const notoArabic = localFont({
@@ -12,4 +13,5 @@ export const notoArabic = localFont({
   variable: "--font-ar",
   display: "swap",
   adjustFontFallback: "Times New Roman",
+  preload: true,
 });
