@@ -74,4 +74,5 @@ The implementation focuses on clean architecture, correct API integration, user-
 ## Deployed URL
 
 - The application is deployed on Vercel:
+https://hub71x.vercel.app
 
