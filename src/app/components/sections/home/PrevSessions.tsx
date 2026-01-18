@@ -3,6 +3,7 @@ import SectionTitle from "../../ui/SectionTitle";
 import { getTranslations } from "next-intl/server";
 import SessionCard from "../../ui/SessionCard";
 import NoDate from "../../ui/NoDate";
+import MotionFadeSlide from "../../ui/MotionFadeSlide";
 
 interface PrevSessionsProps {
   sessions: Session[];
@@ -19,8 +20,8 @@ const PrevSessions = async ({ sessions }: PrevSessionsProps) => {
         {sessions?.length === 0 ? (
           <NoDate />
         ) : (
-          sessions?.map((session) => (
-            <div key={session.title}>
+          sessions?.map((session, index) => (
+            <MotionFadeSlide key={session.title} delay={index * 0.08}>
               <SessionCard
                 title={session.title}
                 start={session.start}
@@ -31,7 +32,7 @@ const PrevSessions = async ({ sessions }: PrevSessionsProps) => {
                 timeColor="text-green-color"
                 t={t}
               />
-            </div>
+            </MotionFadeSlide>
           ))
         )}
       </div>
