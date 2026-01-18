@@ -31,11 +31,11 @@ const RegisterSession = async () => {
             <h2 className="text-4xl md:text-5xl font-bold text-main-color animate-pulse">
               {t("comingSoonTitle")}
             </h2>
-            <p className="text-gray-600 text-lg">{t("comingSoonSubtitle")}</p>
-
-            <div className="mt-6 animate-bounce text-main-color">
+            <div className="mt-2 animate-bounce text-main-color">
               <ChevronDown className="w-8 h-8" />
             </div>
+            <p className="text-gray-600 text-lg">{t("comingSoonSubtitle")}</p>
+
           </div>
         </div>
       </MotionFadeSlide>
