@@ -2,11 +2,13 @@ import { Session } from "@/app/types/SessionTypes";
 import SectionTitle from "../../ui/SectionTitle";
 import { getTranslations } from "next-intl/server";
 import SessionCard from "../../ui/SessionCard";
+import NoDate from "../../ui/NoDate";
 interface UpComingSessionsProps {
   sessions: Session[];
 }
 
 const UpComingSessions = async ({ sessions }: UpComingSessionsProps) => {
+  // const sessions: Session[] = [];
   const t = await getTranslations("");
   return (
     <div>
@@ -15,20 +17,24 @@ const UpComingSessions = async ({ sessions }: UpComingSessionsProps) => {
         title={t("Upcoming Sessions")}
       />
       <div className="my-5 flex flex-col gap-4">
-        {sessions?.map((session) => (
-          <div key={session.title}>
-            <SessionCard
-              title={session.title}
-              start={session.start}
-              end={session.end}
-              btnLabel={t("Register Now")}
-              btnVariant="red"
-              href={`/register-session`}
-              timeColor="text-red-color"
-              t={t}
-            />
-          </div>
-        ))}
+        {sessions?.length === 0 ? (
+          <NoDate />
+        ) : (
+          sessions?.map((session) => (
+            <div key={session.title}>
+              <SessionCard
+                title={session.title}
+                start={session.start}
+                end={session.end}
+                btnLabel={t("Register Now")}
+                btnVariant="red"
+                href={`/register-session`}
+                timeColor="text-red-color"
+                t={t}
+              />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

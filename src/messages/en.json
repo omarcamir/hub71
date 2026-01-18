@@ -45,5 +45,6 @@
     "unexpectedError": "Registration failed due to an unexpected error. Please try again later."
   },
   "comingSoonTitle": "SOON!",
-  "comingSoonSubtitle": "We are working hard to bring this session to you. Stay tuned for updates!"
+  "comingSoonSubtitle": "We are working hard to bring this session to you. Stay tuned for updates!",
+  "No Data available" : "No data available."
 }
