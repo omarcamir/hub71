@@ -10,6 +10,7 @@ import { headerLinks } from "@/app/utils/paths";
 import Button from "../ui/Button";
 import { AccessibilityPanel } from "../ui/AccessibilityPanel/AccessibilityPanel";
 import SearchModal from "../sections/header/SearchModal";
+import ImpactReport from "../sections/header/ImpactReport";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ const Header = () => {
       ([entry]) => {
         setScrolled(!entry.isIntersecting);
       },
-      { root: null, threshold: 0 }
+      { root: null, threshold: 0 },
     );
 
     observer.observe(sentinelRef.current);
@@ -45,19 +46,34 @@ const Header = () => {
       >
         <div className="container">
           <div className="flex items-center justify-between">
-            <Logo className={scrolled ? "scale-90 transition-transform duration-300" : "scale-100 transition-transform duration-300"} />
+            <Logo
+              className={
+                scrolled
+                  ? "scale-90 transition-transform duration-300"
+                  : "scale-100 transition-transform duration-300"
+              }
+            />
             <div className="flex items-center gap-3">
+              <div className="hidden md:block">
+                <ImpactReport />
+              </div>
               <LanguageSwitcher />
 
               <div className="hidden sm:flex gap-3">
                 <SearchModal />
-                <AccessibilityPanel t={t}/>
+                <AccessibilityPanel t={t} />
               </div>
 
               <Button
                 onClick={() => setIsOpen(!isOpen)}
                 variant="blue"
-                icon={isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                icon={
+                  isOpen ? (
+                    <X className="w-6 h-6" />
+                  ) : (
+                    <Menu className="w-6 h-6" />
+                  )
+                }
                 ariaLabel="menu"
               />
             </div>
@@ -66,7 +82,9 @@ const Header = () => {
 
         <div
           className={`absolute top-full left-0 w-full bg-main-color backdrop-blur-xl border-t border-white/10 shadow-xl transition-all duration-300 ease-in-out origin-top ${
-            isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"
+            isOpen
+              ? "scale-y-100 opacity-100"
+              : "scale-y-0 opacity-0 pointer-events-none"
           }`}
         >
           <div className="px-4 py-6 w-full container">
@@ -81,8 +99,9 @@ const Header = () => {
               </Link>
             ))}
             <div className="flex gap-2 w-full md:hidden">
+              <ImpactReport />
               <SearchModal />
-              <AccessibilityPanel t={t}/>
+              <AccessibilityPanel t={t} />
             </div>
           </div>
         </div>

@@ -23,4 +23,16 @@ export const pageMetadata: Record<string, Record<Locale, Metadata>> = {
         "اكتشف الجلسات والفعاليات التي تجمع مجتمع الشركات الناشئة لتبادل المعرفة والرؤى وفرص النمو.",
     },
   },
+  "register-session": {
+    en: {
+      title: withSiteName("Register for a Session", "en"),
+      description:
+        "Register to attend upcoming sessions and events with founders, investors, and innovators from the startup ecosystem.",
+    },
+    ar: {
+      title: withSiteName("التسجيل في جلسة", "ar"),
+      description:
+        "سجّل لحضور الجلسات والفعاليات القادمة مع المؤسسين والمستثمرين والمبتكرين من منظومة الشركات الناشئة.",
+    },
+  },
 };

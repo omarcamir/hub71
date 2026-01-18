@@ -1,7 +1,15 @@
 import BackButton from "@/app/components/ui/BackButton";
 import SectionTitle from "@/app/components/ui/SectionTitle";
+import { generatePageMetadata } from "@/app/helpers/getPageMetadata";
 import { ChevronDown } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+
+
+// Dynamic metadata
+export async function generateMetadata({ params }: LayoutProps<"/[locale]">) {
+  return generatePageMetadata({ page: "register-session", params });
+}
+
 
 const RegisterSession = async () => {
   const t = await getTranslations();
