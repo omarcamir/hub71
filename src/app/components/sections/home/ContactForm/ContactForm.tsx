@@ -97,7 +97,7 @@ const ContactForm = () => {
       <form
         ref={formRef}
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="scroll-mt-20 md:scroll-mt-32 flex flex-col gap-5 p-5"
+        className="scroll-mt-20 md:scroll-mt-32 flex flex-col gap-5"
       >
         {/* Form Fields */}
         <FormField
@@ -180,7 +180,7 @@ const ContactForm = () => {
           label={t("contactCheckbox")}
         />
 
-        <div className="flex items-center justify-between gap-6 mt-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-4">
           <Button
             title={t("submitButton")}
             variant="blue"

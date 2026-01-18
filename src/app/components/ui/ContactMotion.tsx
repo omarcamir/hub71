@@ -24,7 +24,6 @@ export default function ContactMotion({
           },
         },
       }}
-      className="py-14 px-8 bg-gray-card"
     >
       {/* Title */}
       <motion.div
