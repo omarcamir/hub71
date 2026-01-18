@@ -24,7 +24,7 @@ const Footer = async () => {
       <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12">
         <div className="col-span-1 md:col-span-2 flex flex-col gap-8 md:gap-10 lg:gap-12">
           <div className="mb-6">
-            <Logo className="scale-75"/>
+            <Logo className={`scale-75 ${isAr ? "origin-top-right" : "origin-top-left"}`}/>
           </div>
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="text-main-color uppercase min-h-40">
