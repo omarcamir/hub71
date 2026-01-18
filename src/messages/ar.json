@@ -46,5 +46,9 @@
   },
   "comingSoonTitle": "قريبًا!",
   "comingSoonSubtitle": "نعمل جاهدين لتقديم هذه الجلسة لك. ترقب التحديثات!",
-  "No Data available" : "لا توجد بيانات متاحة."
+  "No Data available" : "لا توجد بيانات متاحة.",
+  "Accessibility options": "خيارات إمكانية الوصول",
+  "Increase font": "تكبير الخط",
+  "Decrease font": "تصغير الخط",
+  "Black & white": "أبيض وأسود"
 }
