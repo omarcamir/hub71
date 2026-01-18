@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "../ui/LangSwitcher";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "../ui/Logo";
 import { Link } from "@/app/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { headerLinks } from "@/app/utils/paths";
 import Button from "../ui/Button";
 import { AccessibilityPanel } from "../ui/AccessibilityPanel/AccessibilityPanel";
+import SearchModal from "../sections/header/SearchModal";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +50,7 @@ const Header = () => {
               <LanguageSwitcher />
 
               <div className="hidden sm:flex gap-3">
-                <Button icon={<Search className="w-6 h-6" />} ariaLabel="search" variant="white" />
+                <SearchModal />
                 <AccessibilityPanel t={t}/>
               </div>
 
@@ -80,7 +81,7 @@ const Header = () => {
               </Link>
             ))}
             <div className="flex gap-2 w-full md:hidden">
-              <Button title={t("Search")} icon={<Search className="w-5 h-5 font-bold" />} ariaLabel="search" variant="white" className="font-bold" />
+              <SearchModal />
               <AccessibilityPanel t={t}/>
             </div>
           </div>
